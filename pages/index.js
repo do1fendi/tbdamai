@@ -13,6 +13,7 @@ export default function Home() {
         <h1 className={styles.title}>
           Welcome to Toko Besi Damai
         </h1>
+        <h1 className="text-5xl font-bold text-susu">Hello world!</h1>
 
         <p className={styles.description}>
           Get started by editing{' '}
