@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
+
 export default function Home() {
   return (
     <div className={styles.container}>
@@ -13,7 +14,11 @@ export default function Home() {
         <h1 className={styles.title}>
           Welcome to Toko Besi Damai
         </h1>
+        <button className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"></button>
         <h1 className="text-5xl font-bold text-susu">Hello world!</h1>
+        <a href="" className="rounded bg-wizard hover:bg-red-700 text-susu py-2 px-4">
+          Hover me
+</a>
 
         <p className={styles.description}>
           Get started by editing{' '}
