@@ -1,22 +1,36 @@
+const colors = require('tailwindcss/colors')
+
 module.exports = {
   purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
     colors: {
-      gray: '#dddfd4',
-      yellow: '#fae596',
-      lightGreen: '#3fb0ac',
-      darkGreen: '#173e43',
-      white: '#FBFBFB',
+      transparent: 'transparent',
+      current: 'currentColor',
+      black: '#202020',
+      white: colors.white,
+      darkGray: '#3F3F3F',
+      lightGray: '#707070',
+      yellow: '#FFDF6C',
+      indigo: colors.indigo,
+      red: colors.rose,
+      yellow: colors.amber,
     },
-    conteiner: {
+    container: {
       center: true,
     },
-    extend: {},
+    extend: {
+      colors: {
+        green: {
+          900: '#173e43',
+        }
+      }
+    },
   },
   variants: {
     extend: {
       padding: ['hover'],
+
     },
   },
   plugins: [],
