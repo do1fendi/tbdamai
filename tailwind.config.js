@@ -14,7 +14,8 @@ module.exports = {
       yellow: '#FFDF6C',
       indigo: colors.indigo,
       red: colors.rose,
-      yellow: colors.amber,
+      neptune: '#80BEAF',
+      sinbad: '#B3DDD1',
     },
     container: {
       center: true,
@@ -30,7 +31,8 @@ module.exports = {
   variants: {
     extend: {
       padding: ['hover'],
-
+      backgroundColor: ['active'],
+      textDecoration: ['active'],
     },
   },
   plugins: [],

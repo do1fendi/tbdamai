@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
 import Logo from './Logo'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 export default function Nav() {
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
   return (
     <div>
-      <nav className="bg-black">
+      <nav className="bg-neptune">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
@@ -22,27 +24,25 @@ export default function Nav() {
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
                   <Link href="/">
-                    <a
-                      className=" hover:bg-darkGray text-white px-3 py-2 rounded-md text-sm font-medium"
+                    <a className={router.pathname == "/" ? "selected hover:bg-sinbad text-white px-3 py-2 rounded-md text-sm font-medium" : "hover:bg-sinbad text-white px-3 py-2 rounded-md text-sm font-medium"}
                     >
                       Home
-                  </a>
+                    </a>
                   </Link>
                   <Link href="/coran">
-                    <a
-                      className="hover:bg-darkGray text-white hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    <a className={router.pathname == "/coran" ? "selected hover:bg-sinbad text-white px-3 py-2 rounded-md text-sm font-medium" : "hover:bg-sinbad text-white px-3 py-2 rounded-md text-sm font-medium"}
+
                     >
                       Coran
-                  </a>
+                    </a>
                   </Link>
                   <Link href="/kuningan">
-                    <a
-                      className="text-white hover:bg-darkGray hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    <a className={router.pathname == "/kuningan" ? "selected hover:bg-sinbad text-white px-3 py-2 rounded-md text-sm font-medium" : "hover:bg-sinbad text-white px-3 py-2 rounded-md text-sm font-medium"}
+
                     >
                       Kuningan
-                  </a>
+                    </a>
                   </Link>
-                  
                 </div>
               </div>
             </div>
@@ -50,7 +50,7 @@ export default function Nav() {
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 type="button"
-                className="bg-gray-900 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                className="bg-gray-900 inline-flex items-center justify-center p-2 rounded-md text-lightGray hover:text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                 aria-controls="mobile-menu"
                 aria-expanded="false"
               >
@@ -105,40 +105,27 @@ export default function Nav() {
           {(ref) => (
             <div className="md:hidden" id="mobile-menu">
               <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a
-                  href="#"
-                  className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium"
-                >
-                  Dashboard
-                </a>
+                <Link href="/">
+                  <a onClick={() => setIsOpen(!isOpen)} className={router.pathname == "/" ? "selected hover:bg-sinbad text-white px-3 py-2 block rounded-md text-sm font-medium" : "hover:bg-sinbad text-white px-3 py-2 block rounded-md text-sm font-medium"}
+                  >
+                    Home
+                  </a>
+                </Link>
+                <Link href="/coran">
+                  <a onClick={() => setIsOpen(!isOpen)} className={router.pathname == "/coran" ? "selected hover:bg-sinbad text-white px-3 py-2 block rounded-md text-sm font-medium" : "hover:bg-sinbad text-white px-3 py-2 block rounded-md text-sm font-medium"}
 
-                <a
-                  href="#"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                >
-                  Team
-                </a>
+                  >
+                    Coran
+                  </a>
+                </Link>
+                <Link href="/kuningan">
+                  <a onClick={() => setIsOpen(!isOpen)} className={router.pathname == "/kuningan" ? "selected hover:bg-sinbad text-white px-3 py-2 block rounded-md text-sm font-medium" : "hover:bg-sinbad text-white px-3 py-2 block rounded-md text-sm font-medium"}
 
-                <a
-                  href="#"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                >
-                  Projects
-                </a>
+                  >
+                    Kuningan
+                  </a>
+                </Link>
 
-                <a
-                  href="#"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                >
-                  Calendar
-                </a>
-
-                <a
-                  href="#"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                >
-                  Reports
-                </a>
               </div>
             </div>
           )}
