@@ -2,10 +2,11 @@ import { Menu, Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState, useContext } from 'react'
 import { UserIcon } from '@heroicons/react/solid'
 import {StoreContext} from '../../store/store'
+import NavLoginForm from './NavLoginForm'
 
 export default function NavUSer() {
   const ctx = useContext(StoreContext)
-  console.log(ctx.logged)
+  // console.log(ctx.logged)
   let [isOpen, setIsOpen] = useState(false)
 
   function closeModal() {
@@ -17,8 +18,7 @@ export default function NavUSer() {
   }
 
   return (
-    <>
-    
+    <>      
       <Menu as="div" className="relative inline-block text-left mr-2">      
         <div>
           <Menu.Button className="inline-flex justify-center w-full px-2 py-2 text-sm font-medium text-white bg-black rounded-full bg-opacity-20 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
@@ -39,7 +39,7 @@ export default function NavUSer() {
             <div className="px-1 py-1 ">
               <Menu.Item>
                 {({ active }) => (
-                  <button onClick={ctx.login}
+                  <button onClick={openModal}
                     className={`${active ? 'bg-sinbad text-white font-semibold' : 'text-gray-900'
                       } group flex rounded-md items-center w-full px-2 py-2 text-sm font-semibold`}
                                         >
@@ -61,7 +61,7 @@ export default function NavUSer() {
         </button>
       </div> */}
 
-      <Transition appear show={isOpen} as={Fragment}>
+      <Transition appear show={isOpen} as={Fragment}>        
         <Dialog
           as="div"
           className="fixed inset-0 z-10 overflow-y-auto"
@@ -84,7 +84,7 @@ export default function NavUSer() {
             <span
               className="inline-block h-screen align-middle"
               aria-hidden="true"
-            >
+            >              
               &#8203;
             </span>
             <Transition.Child
@@ -96,20 +96,15 @@ export default function NavUSer() {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
+              
               <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
                 <Dialog.Title
                   as="h3"
-                  className="text-lg font-medium leading-6 text-gray-900"
+                  className="text-lg font-medium leading-6 text-gray-900 mb-2"
                 >
-                  Payment successful
-                </Dialog.Title>
-                <div className="mt-2">
-                  <p className="text-sm text-gray-500">
-                    Your payment has been successfully submitted. We’ve sent
-                    your an email with all of the details of your order.
-                  </p>
-                </div>
-
+                  Login
+                </Dialog.Title>                
+                <NavLoginForm  />
                 <div className="mt-4">
                   <button
                     type="button"

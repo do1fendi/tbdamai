@@ -15,16 +15,19 @@ module.exports = {
       indigo: colors.indigo,
       red: colors.rose,
       neptune: '#80BEAF',
-      sinbad: '#B3DDD1',
+      sinbad: {
+        500: '#B3DDD1',
+        300: '#173e43',
+      },
     },
     container: {
       center: true,
     },
     extend: {
       colors: {
-        green: {
-          900: '#173e43',
-        }
+        // sinbad: {
+        //   300: '#173e43',
+        // }
       }
     },
   },
