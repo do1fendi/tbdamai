@@ -37,10 +37,17 @@ export default function NavUSer() {
         >
           <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="px-1 py-1 ">
-              <Menu.Item>
-                {({ active }) => (
+              <Menu.Item as="div">              
+                {ctx.logged ? ({ active }) => (
                   <button onClick={openModal}
-                    className={`${active ? 'bg-sinbad text-white font-semibold' : 'text-gray-900'
+                    className={`${active ? 'bg-sinbad-500 text-gray-900 font-semibold' : 'text-gray-900'
+                      } group flex rounded-md items-center w-full px-2 py-2 text-sm font-semibold`}
+                                        >
+                    Logout
+                  </button>
+                ) : ({ active }) => (
+                  <button onClick={openModal}
+                    className={`${active ? 'bg-sinbad-500 text-gray-900 font-semibold' : 'text-gray-900'
                       } group flex rounded-md items-center w-full px-2 py-2 text-sm font-semibold`}
                                         >
                     Login
@@ -104,16 +111,7 @@ export default function NavUSer() {
                 >
                   Login
                 </Dialog.Title>                
-                <NavLoginForm  />
-                <div className="mt-4">
-                  <button
-                    type="button"
-                    className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
-                    onClick={closeModal}
-                  >
-                    Got it, thanks!
-                  </button>
-                </div>
+                <NavLoginForm  />                
               </div>
             </Transition.Child>
           </div>

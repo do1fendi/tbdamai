@@ -17,7 +17,8 @@ module.exports = {
       neptune: '#80BEAF',
       sinbad: {
         500: '#B3DDD1',
-        300: '#173e43',
+        700: '#7ec5b1',
+        900: '#5bb59c'
       },
     },
     container: {
