@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start",
-    "deploy": "gh-pages -d build -t true"
+    "deploy": "gh-pages -d out -t true"
   },
   "homepage": "https://do1fendi.github.io/tbdamai/",
   "dependencies": {
