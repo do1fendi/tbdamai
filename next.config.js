@@ -1,5 +1,6 @@
 module.exports = {
     basePath: '/tbdamai',
+    distDir: "_next",
     images: {
         loader: "imgix",
         path: "/tbdamai",
