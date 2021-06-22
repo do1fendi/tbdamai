@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build && next export",
     "start": "next start",
-    "deploy": "gh-pages -d out"
+    "deploy": "next build && next export gh-pages -d out"
   },
   "homepage": "https://do1fendi.github.io/tbdamai/",
   "dependencies": {
