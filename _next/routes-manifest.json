@@ -1,0 +1,1 @@
+{"version":3,"pages404":true,"basePath":"/tbdamai","redirects":[{"source":"/tbdamai/","destination":"/tbdamai","basePath":false,"internal":true,"statusCode":308,"regex":"^/tbdamai/$"},{"source":"/:path+/","destination":"/:path+","internal":true,"statusCode":308,"regex":"^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"}],"rewrites":[],"headers":[],"dynamicRoutes":[],"dataRoutes":[]}
