@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 export const StoreContext = createContext()
 
 const StoreContextProvider = (props) => {
-    const [logged, setLogged] = useState(true)
+    const [logged, setLogged] = useState(false)
     function login(){
         setLogged(true)
     }
