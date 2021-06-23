@@ -4,12 +4,13 @@ export const StoreContext = createContext()
 
 const StoreContextProvider = (props) => {
     const [logged, setLogged] = useState(false)
-    function login(){
-        setLogged(true)
-    }
+    // function login(){
+    //     setLogged(true)
+    //     console.log(logged)
+    // }
 
     return (
-        <StoreContext.Provider value={{logged, login}} >
+        <StoreContext.Provider value={{logged, setLogged}} >
             {props.children}
         </StoreContext.Provider>
     )

@@ -1,6 +1,6 @@
 import { Menu, Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState, useContext } from 'react'
-import { UserIcon } from '@heroicons/react/solid'
+import { LogoutIcon, UserIcon } from '@heroicons/react/solid'
 import {StoreContext} from '../../store/store'
 import NavLoginForm from './NavLoginForm'
 
@@ -17,13 +17,18 @@ export default function NavUSer() {
     setIsOpen(true)
   }
 
+  function logout(){
+    ctx.setLogged(false)
+    alert(1)
+  }
+
   return (
     <>
 
       <Menu as="div" className="relative inline-block text-left mr-2">      
         <div>
           <Menu.Button className="inline-flex justify-center w-full px-2 py-2 text-sm font-medium text-white bg-black rounded-full bg-opacity-20 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
-            {ctx.logged ? <UserIcon className="w-5 h-5" aria-hidden="true"/> : <div>Login</div> }            
+            <UserIcon className="w-5 h-5" aria-hidden="true"/>           
           </Menu.Button>
         </div>
         <Transition
@@ -39,7 +44,7 @@ export default function NavUSer() {
             <div className="px-1 py-1 ">
               <Menu.Item as="div">              
                 {ctx.logged ? ({ active }) => (
-                  <button onClick={openModal}
+                  <button onClick={logout}
                     className={`${active ? 'bg-sinbad-500 text-gray-900 font-semibold' : 'text-gray-900'
                       } group flex rounded-md items-center w-full px-2 py-2 text-sm font-semibold`}
                                         >

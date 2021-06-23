@@ -11,9 +11,8 @@ export default function Home() {
       </Head>
       <h1>Welcome to Tb Damai</h1>
       <MessengerCustomerChat
-        pageId="100258215401523"
-        appId="329917598722443"
-        htmlRef="<REF_STRING>"
+        pageId={process.env.FACEBOOK_PAGE_ID}
+        appId={process.env.FACEBOOK_APP_ID}
       />
     </div>
   );
