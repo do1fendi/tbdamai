@@ -12,8 +12,34 @@ export default function NavLoginForm() {
     password: "",
   });
 
-  const facebookLogin = (response) => {
-    console.log(response);
+  // const facebookLogin = (response) => {
+  //   console.log(response);
+  // };
+
+  const facebookLogin = () => {
+    
+    let fbData = {
+      fbId: "5345435436",
+      fbName: "john",
+      fbEmail: "a@ba.com",
+      fbToken: "sdas453kl5kl4m54m543",
+      fbTokenExpiration: 43324324,
+      fbPicUrl: "https://url.com",
+    }
+    console.log(fbData);
+    (async () => {
+      const rawResponse = await fetch(`${process.env.BASEURL}/fbLogin`, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(fbData),
+      });
+      const res = await rawResponse.json();
+      console.log(res);
+     
+    })();
   };
 
   const webLogin = () => {
@@ -72,6 +98,7 @@ export default function NavLoginForm() {
         icon="fa-facebook"
         size="small"
       />
+      <button onClick={facebookLogin}>fb</button>
     </div>
   );
 }
