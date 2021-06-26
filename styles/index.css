@@ -5,7 +5,9 @@
 @tailwind components;
 @tailwind utilities;
 
-
+.kep-login-facebook{
+  width: 100%;
+}
 /* html,
 body {
   padding: 0;

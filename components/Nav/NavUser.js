@@ -1,7 +1,7 @@
 import { Menu, Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState, useContext } from 'react'
 import { LogoutIcon, UserIcon } from '@heroicons/react/solid'
-import {StoreContext} from '../../store/store'
+import { StoreContext } from '../../store/store'
 import NavLoginForm from './NavLoginForm'
 
 export default function NavUSer() {
@@ -9,7 +9,7 @@ export default function NavUSer() {
   // console.log(ctx.logged)
   let [isOpen, setIsOpen] = useState(false)
 
-  function closeModal() {
+  const closeModal = () => {
     setIsOpen(false)
   }
 
@@ -17,18 +17,33 @@ export default function NavUSer() {
     setIsOpen(true)
   }
 
-  function logout(){
-    ctx.setLogged(false)
-    alert(1)
+  const logout = () => {
+    (async () => {
+      const rawResponse = await fetch(`${process.env.BASEURL}/logout`, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify({ token: `${localStorage.getItem('token')}` }),
+      });
+      const res = await rawResponse.json();
+      // console.log(res.status)
+      if (res.status == "Success") {
+        localStorage.removeItem('token')
+        ctx.setLogged(false)
+      }
+    })()
   }
 
   return (
     <>
 
-      <Menu as="div" className="relative inline-block text-left mr-2">      
+      <Menu as="div" className="relative inline-block text-left mr-2">
         <div>
           <Menu.Button className="inline-flex justify-center w-full px-2 py-2 text-sm font-medium text-white bg-black rounded-full bg-opacity-20 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
-            <UserIcon className="w-5 h-5" aria-hidden="true"/>           
+            <UserIcon className="w-5 h-5" aria-hidden="true" />
           </Menu.Button>
         </div>
         <Transition
@@ -42,19 +57,19 @@ export default function NavUSer() {
         >
           <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="px-1 py-1 ">
-              <Menu.Item as="div">              
+              <Menu.Item as="div">
                 {ctx.logged ? ({ active }) => (
                   <button onClick={logout}
                     className={`${active ? 'bg-sinbad-500 text-gray-900 font-semibold' : 'text-gray-900'
                       } group flex rounded-md items-center w-full px-2 py-2 text-sm font-semibold`}
-                                        >
+                  >
                     Logout
                   </button>
                 ) : ({ active }) => (
                   <button onClick={openModal}
                     className={`${active ? 'bg-sinbad-500 text-gray-900 font-semibold' : 'text-gray-900'
                       } group flex rounded-md items-center w-full px-2 py-2 text-sm font-semibold`}
-                                        >
+                  >
                     Login
                   </button>
                 )}
@@ -73,7 +88,7 @@ export default function NavUSer() {
         </button>
       </div> */}
 
-      <Transition appear show={isOpen} as={Fragment}>        
+      <Transition appear show={isOpen} as={Fragment}>
         <Dialog
           as="div"
           className="fixed inset-0 z-10 overflow-y-auto"
@@ -96,7 +111,7 @@ export default function NavUSer() {
             <span
               className="inline-block h-screen align-middle"
               aria-hidden="true"
-            >              
+            >
               &#8203;
             </span>
             <Transition.Child
@@ -108,15 +123,15 @@ export default function NavUSer() {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              
+
               <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
                 <Dialog.Title
                   as="h3"
                   className="text-lg font-medium leading-6 text-gray-900 mb-2"
                 >
                   Login
-                </Dialog.Title>                
-                <NavLoginForm  />                
+                </Dialog.Title>
+                <NavLoginForm closeModal={closeModal} />
               </div>
             </Transition.Child>
           </div>

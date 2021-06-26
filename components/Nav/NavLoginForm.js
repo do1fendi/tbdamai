@@ -2,7 +2,7 @@ import { useState, useContext, useRef } from "react";
 import { StoreContext } from "../../store/store";
 import FacebookLogin from "react-facebook-login";
 
-export default function NavLoginForm() {
+export default function NavLoginForm(props) {
   const ctx = useContext(StoreContext);
   const userN = useRef(null);
   const pass = useRef(null);
@@ -12,34 +12,35 @@ export default function NavLoginForm() {
     password: "",
   });
 
-  // const facebookLogin = (response) => {
-  //   console.log(response);
-  // };
-
-  const facebookLogin = () => {
-    
+  const facebookLogin = (response) => {
+    // console.log(response)
     let fbData = {
-      fbId: "5345435436",
-      fbName: "john",
-      fbEmail: "a@ba.com",
-      fbToken: "sdas453kl5kl4m54m543",
-      fbTokenExpiration: 43324324,
-      fbPicUrl: "https://url.com",
+      fbId: response.id,
+      fbName: response.name,
+      fbEmail: response.email,
+      fbToken: response.accessToken,
+      fbTokenExpiration: response.data_access_expiration_time,
+      fbPicUrl: response.picture.data.url,
     }
-    console.log(fbData);
-    (async () => {
-      const rawResponse = await fetch(`${process.env.BASEURL}/fbLogin`, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(fbData),
-      });
-      const res = await rawResponse.json();
-      console.log(res);
-     
-    })();
+    if (response) {
+      (async () => {
+        const rawResponse = await fetch(`${process.env.BASEURL}/fbLogin`, {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(fbData),
+        });
+        const res = await rawResponse.json();
+        if (res.status == 'Success') {
+          localStorage.setItem('token', res.token)
+          ctx.setLogged(true)
+          props.closeModal()
+        }
+      })();
+    }
+
   };
 
   const webLogin = () => {
@@ -61,11 +62,14 @@ export default function NavLoginForm() {
         console.log(res);
         // if login success
         if (res.token) {
+          localStorage.setItem('token', res.token)
           ctx.setLogged(true);
+          props.closeModal()
         }
       })();
     }
   };
+
   return (
     <div>
       <input
@@ -94,11 +98,11 @@ export default function NavLoginForm() {
         appId={process.env.FACEBOOK_APP_ID}
         autoLoad={true}
         fields="name,email,picture"
+        scope="public_profile"
         callback={facebookLogin}
         icon="fa-facebook"
         size="small"
       />
-      <button onClick={facebookLogin}>fb</button>
     </div>
   );
 }
