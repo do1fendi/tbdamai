@@ -1,6 +1,7 @@
 import { useState, useContext, useRef } from "react";
 import { StoreContext } from "../../store/store";
 import FacebookLogin from "react-facebook-login";
+import Router from 'next/router';
 
 export default function NavLoginForm(props) {
   const ctx = useContext(StoreContext);
@@ -70,6 +71,11 @@ export default function NavLoginForm(props) {
     }
   };
 
+  const callReg = (e) => {
+    props.closeModal()
+    Router.push('/register')
+  }
+
   return (
     <div>
       <input
@@ -78,7 +84,7 @@ export default function NavLoginForm(props) {
         onChange={(e) => setForm({ ...form, username: e.target.value })}
         type="text"
         className="w-full border border-sinbad-500 px-3 py-1 rounded-lg shadow-sm mb-2 focus:outline-none focus:border-sinbad-500 focus:ring-1 focus:ring-sinbad-500"
-        placeholder="Username or Email"
+        placeholder="Email"
       />
       <input
         ref={pass}
@@ -103,6 +109,8 @@ export default function NavLoginForm(props) {
         icon="fa-facebook"
         size="small"
       />
+      <button onClick={callReg} className="mb-2 bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-4 rounded-lg mt-2 w-full focus:outline-none">Register</button>
+
     </div>
   );
 }

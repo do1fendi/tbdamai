@@ -7,7 +7,7 @@ import NavLoginForm from './NavLoginForm'
 export default function NavUSer() {
   const ctx = useContext(StoreContext)
   // console.log(ctx.logged)
-  let [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
 
   const closeModal = () => {
     setIsOpen(false)
@@ -78,16 +78,6 @@ export default function NavUSer() {
           </Menu.Items>
         </Transition>
       </Menu>
-      {/* <div className="mr-2">
-        <button
-          type="button"
-          onClick={openModal}
-          className="px-4 py-2 text-sm font-medium text-white bg-black rounded-md bg-opacity-20 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
-        >
-          User
-        </button>
-      </div> */}
-
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog
           as="div"
