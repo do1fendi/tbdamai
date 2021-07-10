@@ -30,7 +30,7 @@ export default function Home() {
     <div className="container mx-auto px-4">
       <Head>
         <title>TBDamai | Home</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/tbdamai/favicon.ico" />
       </Head>
       <h1>Welcome to Tb Damai</h1>
       

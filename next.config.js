@@ -1,12 +1,12 @@
 module.exports = {
-    basePath: '/tbdamai',
-    assetPrefix: '/tbdamai/',
+    basePath: '',
+    assetPrefix: '',
     images: {
         loader: "imgix",
-        path: "/tbdamai",
+        path: "",
     },
     env: {
-        BASEURL: 'http://localhost:3005/frontend',
+        BASEURL: 'https://api.tbdamai.net/frontend',
         FACEBOOK_APP_ID: '329917598722443',
         FACEBOOK_PAGE_ID: '100258215401523',
     },
