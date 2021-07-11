@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Card from '../components/Card/Card'
 
 export default function coran() {
     return (
@@ -6,7 +7,7 @@ export default function coran() {
             <Head>
                 <title>Coran</title>
             </Head>
-            Coran
+            <Card data={[{name:'john'},{name:'mark'},{name:'Ben'}]}></Card>
         </div>
     )
 }
