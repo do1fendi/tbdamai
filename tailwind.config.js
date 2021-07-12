@@ -12,7 +12,7 @@ module.exports = {
       darkGray: '#3F3F3F',
       lightGray: '#707070',
       yellow: '#FFDF6C',
-      indigo: colors.indigo,
+      indigo: '#4B0082',
       red: colors.rose,
       neptune: '#80BEAF',
       sinbad: {
