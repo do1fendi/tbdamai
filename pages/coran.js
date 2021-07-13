@@ -13,7 +13,7 @@ export default function coran() {
         })()
     },[])
     return (
-        <div className="grid xl:grid-cols-7 lg:grid-cols-5 sm:grid-cols-2 md:grid-cols-4 grid-cols-2 gap-3 px-4 sm:m-auto">
+        <div className="grid 2xl:grid-cols-6 sm:grid-cols-2 md:grid-cols-4 grid-cols-2 gap-3 px-5 sm:m-auto">
             <Head>
                 <title>Coran</title>
             </Head>
