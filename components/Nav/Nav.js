@@ -44,6 +44,13 @@ export default function Nav() {
                       Kuningan
                     </a>
                   </Link>
+                  <Link href="/about">
+                    <a className={router.pathname == "/about" ? "selected hover:bg-sinbad text-white px-3 py-2 rounded-md text-sm font-medium" : "hover:bg-sinbad text-white px-3 py-2 rounded-md text-sm font-medium"}
+
+                    >
+                      About
+                    </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -128,6 +135,13 @@ export default function Nav() {
 
                 >
                   Kuningan
+                </a>
+              </Link>
+              <Link href="/about">
+                <a onClick={() => setIsOpen(!isOpen)} className={router.pathname == "/about" ? "selected hover:bg-sinbad text-white px-3 py-2 block rounded-md text-sm font-medium" : "hover:bg-sinbad text-white px-3 py-2 block rounded-md text-sm font-medium"}
+
+                >
+                  About
                 </a>
               </Link>
 
