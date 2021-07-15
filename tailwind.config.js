@@ -7,19 +7,15 @@ module.exports = {
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
-      black: '#202020',
+      black: colors.black,
       white: colors.white,
-      darkGray: '#3F3F3F',
-      lightGray: '#707070',
-      yellow: '#FFDF6C',
-      indigo: '#4B0082',
+      gray: colors.coolGray,
+      indigo: colors.indigo,
       red: colors.rose,
-      neptune: '#80BEAF',
-      sinbad: {
-        500: '#B3DDD1',
-        700: '#7ec5b1',
-        900: '#5bb59c'
-      },
+      yellow: colors.amber,
+      green: colors.emerald,
+      blue: colors.blue,
+      pink: colors.pink,
     },
     container: {
       center: true,
