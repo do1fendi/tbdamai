@@ -32,7 +32,7 @@ export default function Layout({ children }) {
     <div>
       <Nav />
       <Header />
-      <div className="container mx-auto px-2">{children}</div>
+      <div className="container mx-auto">{children}</div>
       <Footer />
     </div>
   );

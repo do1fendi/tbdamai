@@ -2,6 +2,7 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { StoreContext } from "../store/store";
 import { useContext, useEffect } from 'react'
+import Link from "next/link";
 
 export default function Home() {
   const ctx = useContext(StoreContext)
@@ -27,13 +28,15 @@ export default function Home() {
   // },[]);
 
   return (
-    <div className="container mx-auto px-4">
+    <div>
       <Head>
         <title>TBDamai | Home</title>
         <link rel="icon" href="/tbdamai/favicon.ico" />
       </Head>
-      <h1>Welcome to Tb Damai</h1>
-      
+      <div className="bg-blue-200 h-screen">Welcome to Tb Damai</div>
+      <div>
+        <Link href="/coran/tombak"><a><button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Tombak</button></a></Link>
+      </div>
     </div>
   );
 }
