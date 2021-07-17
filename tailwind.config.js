@@ -21,11 +21,11 @@ module.exports = {
       center: true,
     },
     extend: {
-      colors: {
-        // sinbad: {
-        //   300: '#173e43',
-        // }
-      }
+      backgroundImage: theme => ({
+        'tombak-pattern': "url('https://api.tbdamai.net/images/coran/B1/B1.jpg')",
+        'hewan-pattern': "url('https://api.tbdamai.net/images/coran/Singa_Kecil/Singa_Kecil.jpg')",
+        'lainnya-pattern': "url('https://api.tbdamai.net/images/coran/0821/0821.jpg')"
+      })
     },
   },
   variants: {

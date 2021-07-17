@@ -32,7 +32,9 @@ export default function Layout({ children }) {
     <div>
       <Nav />
       <Header />
-      <div className="container mx-auto">{children}</div>
+      <div className="">
+        {children}
+      </div>
       <Footer />
     </div>
   );

@@ -53,17 +53,18 @@ function register() {
     }
 
     return (
-        <div className="flex">
+        <div className="flex justify-center items-center h-screen ">
             <Head>
                 <title>TBDamai | Register</title>
             </Head>
-            <div className="m-auto mt-80">
+            <div className="text-center -mt-40">
+            <div className="text-red-600 text-4xl mb-20 ">Register</div>
                 <input
                     ref={name}
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
                     type="text"
-                    className="w-full border border-sinbad-500 px-3 py-1 rounded-lg shadow-sm mb-2 focus:outline-none focus:border-sinbad-500 focus:ring-1 focus:ring-sinbad-500"
+                    className="w-full border border-red-500 px-3 py-1 rounded-lg shadow-sm mb-2 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                     placeholder="Name"
                 />
                 <input
@@ -71,7 +72,7 @@ function register() {
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
                     type="email"
-                    className="w-full border border-sinbad-500 px-3 py-1 rounded-lg shadow-sm mb-2 focus:outline-none focus:border-sinbad-500 focus:ring-1 focus:ring-sinbad-500"
+                    className="w-full border border-red-500 px-3 py-1 rounded-lg shadow-sm mb-2 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                     placeholder="Email"
                 />
                 <input
@@ -79,12 +80,12 @@ function register() {
                     value={form.password}
                     onChange={(e) => setForm({ ...form, password: e.target.value })}
                     type="password"
-                    className="w-full border border-sinbad-500 px-3 py-1 rounded-lg shadow-sm focus:outline-none focus:border-sinbad-500 focus:ring-1 focus:ring-sinbad-500"
+                    className="w-full border border-red-500 px-3 py-1 rounded-lg shadow-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                     placeholder="Password"
                 />
                 <button
                     onClick={() => webRegister()}
-                    className="mb-2 bg-sinbad-700 hover:bg-sinbad-900 text-white font-bold py-1 px-4 rounded-lg mt-2 w-full focus:outline-none"
+                    className="mb-2 bg-red-700 hover:bg-red-900 text-white font-bold py-1 px-4 rounded-lg mt-2 w-full focus:outline-none"
                 >
                     Register
                 </button>

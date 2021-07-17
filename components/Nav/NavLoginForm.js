@@ -83,7 +83,7 @@ export default function NavLoginForm(props) {
         value={form.username}
         onChange={(e) => setForm({ ...form, username: e.target.value })}
         type="text"
-        className="w-full border border-sinbad-500 px-3 py-1 rounded-lg shadow-sm mb-2 focus:outline-none focus:border-sinbad-500 focus:ring-1 focus:ring-sinbad-500"
+        className="w-full border border-blue-500 px-3 py-1 rounded-lg shadow-sm mb-2 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
         placeholder="Email"
       />
       <input
@@ -91,12 +91,12 @@ export default function NavLoginForm(props) {
         value={form.password}
         onChange={(e) => setForm({ ...form, password: e.target.value })}
         type="password"
-        className="w-full border border-sinbad-500 px-3 py-1 rounded-lg shadow-sm focus:outline-none focus:border-sinbad-500 focus:ring-1 focus:ring-sinbad-500"
+        className="w-full border border-blue-500 px-3 py-1 rounded-lg shadow-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
         placeholder="Password"
       />
       <button
         onClick={() => webLogin()}
-        className="mb-2 bg-sinbad-700 hover:bg-sinbad-900 text-white font-bold py-1 px-4 rounded-lg mt-2 w-full focus:outline-none"
+        className="mb-2 bg-blue-700 hover:bg-blue-900 text-white font-bold py-1 px-4 rounded-lg mt-2 w-full focus:outline-none"
       >
         Login
       </button>

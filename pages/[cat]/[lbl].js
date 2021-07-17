@@ -19,7 +19,7 @@ function cat() {
     })();
   });
   return (
-    <div className=" container mx-auto">
+    <div className="container mx-auto">
       {/* <Head>
         <title>Coran</title>
       </Head> */}
