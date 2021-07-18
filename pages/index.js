@@ -36,14 +36,14 @@ export default function Home() {
       <div className="h-48 w-full from-blue-600 to-purple-500 bg-gradient-to-b flex justify-center items-center text-white text-2xl lg:text-6xl">Selamat Datang di Tb Damai</div>
       <div className="mt-5 mb-2 bg-red-500 text-white lg:text-xl text-lg w-auto inline-block ml-5 p-1 px-2">Produk Spesial</div>
       <div className="flex w-full mt-8">
-        <div className="w-1/3 h-48 flex justify-center items-center bg-tombak-pattern bg-contain bg-center bg-no-repeat pt-36">
-          <Link href="/coran/tombak"><a><button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded-xl">Tombak</button></a></Link>
+        <div className="w-1/3 md:h-56 h-48 flex justify-center items-center bg-tombak-pattern bg-contain bg-center bg-no-repeat shadow-lg">
+          <Link href="/coran/tombak"><a><button className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded-xl">Tombak</button></a></Link>
         </div>
-        <div className="w-1/3 h-48 flex justify-center items-center bg-hewan-pattern bg-contain bg-center bg-no-repeat pt-36">
-          <Link href="/coran/hewan"><a><button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded-xl">Hewan</button></a></Link>
+        <div className="w-1/3 md:h-56 h-48 flex justify-center items-center bg-hewan-pattern bg-contain bg-center bg-no-repeat shadow-lg">
+          <Link href="/coran/hewan"><a><button className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded-xl">Hewan</button></a></Link>
         </div>
-        <div className="w-1/3 h-48 flex justify-center items-center bg-lainnya-pattern bg-contain bg-center bg-no-repeat pt-36">
-          <Link href="/coran/"><a><button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded-xl size-sm">Lainnya</button></a></Link>
+        <div className="w-1/3 md:h-56 h-48 flex justify-center items-center bg-lainnya-pattern bg-contain bg-center bg-no-repeat shadow-lg">
+          <Link href="/coran/"><a><button className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded-xl size-sm">Lainnya</button></a></Link>
         </div>
 
       </div>
