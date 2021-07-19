@@ -29,13 +29,11 @@ export default function Layout({ children }) {
     }
   }, []);
   return (
-    <div>
+    <>
       <Nav />
-      <Header />
-      <div className="">
+      <Header />      
         {children}
-      </div>
       <Footer />
-    </div>
+    </>
   );
 }
