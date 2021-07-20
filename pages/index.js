@@ -43,7 +43,7 @@ export default function Home() {
           <Link href="/coran/hewan"><a><button className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded-xl">Hewan</button></a></Link>
         </div>
         <div className="w-1/3 md:h-56 h-48 flex justify-center items-center bg-lainnya-pattern bg-contain bg-center bg-no-repeat shadow-lg">
-          <Link href="/coran/"><a><button className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded-xl size-sm">Lainnya</button></a></Link>
+          <Link href="/coran/lainnya"><a><button className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded-xl size-sm">Lainnya</button></a></Link>
         </div>
 
       </div>
