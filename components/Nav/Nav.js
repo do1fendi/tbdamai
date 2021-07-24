@@ -44,6 +44,13 @@ export default function Nav() {
                       Kuningan
                     </a>
                   </Link>
+                  <Link href="/sambungan">
+                    <a className={router.pathname == "/sambungan" ? "selected bg-blue-500 text-white px-3 py-2 rounded-md text-sm font-medium" : "hover:bg-blue-500 text-white px-3 py-2 rounded-md text-sm font-medium"}
+
+                    >
+                      Sambungan
+                    </a>
+                  </Link>
                   <Link href="/about">
                     <a className={router.pathname == "/about" ? "selected bg-blue-500 text-white px-3 py-2 rounded-md text-sm font-medium" : "hover:bg-blue-500 text-white px-3 py-2 rounded-md text-sm font-medium"}
 
@@ -51,6 +58,7 @@ export default function Nav() {
                       About
                     </a>
                   </Link>
+
                   <Link href="/policy">
                     <a className={router.pathname == "/policy" ? "selected bg-blue-500 text-white px-3 py-2 rounded-md text-sm font-medium" : "hover:bg-blue-500 text-white px-3 py-2 rounded-md text-sm font-medium"}
 
@@ -142,6 +150,13 @@ export default function Nav() {
 
                 >
                   Kuningan
+                </a>
+              </Link>
+              <Link href="/sambungan">
+                <a onClick={() => setIsOpen(!isOpen)} className={router.pathname == "/sambungan" ? "selected bg-blue-500 text-white px-3 py-2 block rounded-md text-sm font-medium" : "hover:bg-blue-500 text-white px-3 py-2 block rounded-md text-sm font-medium"}
+
+                >
+                  Sambungan
                 </a>
               </Link>
               <Link href="/about">
