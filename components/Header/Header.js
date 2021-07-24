@@ -2,7 +2,7 @@ export default function Header() {
   return (
     <div>
       <div className="text-center text-5xl text-gray-400 bg-blue-400">
-        <div className="-mt-8 lg:-mt-24">
+        <div className="-mt-2 lg:-mt-22 xl:-mt-28">
           <svg
             viewBox="0 0 1428 174"
             version="1.1"

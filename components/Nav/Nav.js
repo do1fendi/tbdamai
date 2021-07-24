@@ -51,6 +51,13 @@ export default function Nav() {
                       About
                     </a>
                   </Link>
+                  <Link href="/policy">
+                    <a className={router.pathname == "/policy" ? "selected bg-blue-500 text-white px-3 py-2 rounded-md text-sm font-medium" : "hover:bg-blue-500 text-white px-3 py-2 rounded-md text-sm font-medium"}
+
+                    >
+                      Policy
+                    </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -142,6 +149,13 @@ export default function Nav() {
 
                 >
                   About
+                </a>
+              </Link>
+              <Link href="/policy">
+                <a onClick={() => setIsOpen(!isOpen)} className={router.pathname == "/policy" ? "selected bg-blue-500 text-white px-3 py-2 block rounded-md text-sm font-medium" : "hover:bg-blue-500 text-white px-3 py-2 block rounded-md text-sm font-medium"}
+
+                >
+                  Policy
                 </a>
               </Link>
 
