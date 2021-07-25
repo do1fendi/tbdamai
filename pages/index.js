@@ -28,7 +28,7 @@ export default function Home() {
   // },[]);
 
   return (
-    <div>
+    <div className="lg:container">
       <Head>
         <title>TBDamai | Home</title>
         <link rel="icon" href="/tbdamai/favicon.ico" />
