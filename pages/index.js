@@ -5,37 +5,52 @@ import { useContext, useEffect } from "react";
 import Link from "next/link";
 
 export default function Home() {
-  // const ctx = useContext(StoreContext);  
+  // const ctx = useContext(StoreContext);
 
-  // useEffect(() => {
-  //   const data = JSON.stringify({
-  //     data: [
-  //       {
-  //         event_name: "ViewContent",
-  //         action_source: "website",
-  //         user_data: {
-  //           client_ip_address: "61.220.179.30",
-  //           client_user_agent: navigator.userAgent,
-  //         },
-  //       },
-  //     ],
-  //     test_event_code: "TEST33861",
-  //   });
-  //   (async () => {
-  //     const rawResponse = await fetch(
-  //       "https://api.tbdamai.net/conversionApi/",
-  //       {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: data,
-  //       }
-  //     );
-  //     const res = await rawResponse;
-  //     console.log(res);
-  //   })();
-  // }, []);
+  const getIp = async () => {
+    const rawResponse = await fetch(
+      "https://api.ipdata.co/?api-key=be0f755b93290b4c100445d77533d291763a417c75524e95e07819ad",
+      {
+        method: "GET",
+      }
+    );
+    const res = await rawResponse.json();
+    conversionApi(res.ip);    
+  };
+
+  function conversionApi(ip) {
+    const data = JSON.stringify({
+      data: [
+        {
+          event_name: "ViewContent",
+          action_source: "website",
+          user_data: {
+            client_ip_address: ip,
+            client_user_agent: navigator.userAgent,
+          },
+        },
+      ],
+      test_event_code: "TEST33861",
+    });
+    (async () => {
+      const rawResponse = await fetch(
+        "https://api.tbdamai.net/conversionApi/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: data,
+        }
+      );
+      const res = await rawResponse;
+      // console.log(res);
+    })();
+  }
+
+  useEffect(() => {
+    // getIp();
+  }, []);
 
   return (
     <div className="lg:container">
