@@ -19,7 +19,7 @@ export default function Layout({ children }) {
           },
         });
         const res = await rawResponse.json();
-        console.log(res);
+        // console.log(res);
         if (res.status == "Success") {
           ctx.setLogged(true);
         } else {
