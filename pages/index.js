@@ -9,30 +9,30 @@ export default function Home() {
 
   const getIp = async () => {
     const rawResponse = await fetch(
-      "https://api.ipdata.co/?api-key=be0f755b93290b4c100445d77533d291763a417c75524e95e07819ad",
+      "https://api.ipify.org/?format=json",
       {
         method: "GET",
       }
     );
     const res = await rawResponse.json();
-    conversionApi(res.ip);    
+    conversionApi(res.ip);
   };
 
   function conversionApi(ip) {
-    const data = JSON.stringify({
-      data: [
-        {
-          event_name: "ViewContent",
-          action_source: "website",
-          user_data: {
-            client_ip_address: ip,
-            client_user_agent: navigator.userAgent,
-          },
-        },
-      ],
-      test_event_code: "TEST33861",
-    });
     (async () => {
+      const data = JSON.stringify({
+        data: [
+          {
+            event_name: "ViewContent",
+            action_source: "website",
+            user_data: {
+              client_ip_address: ip,
+              client_user_agent: navigator.userAgent,
+            },
+          },
+        ],
+        test_event_code: "TEST33861",
+      });
       const rawResponse = await fetch(
         "https://api.tbdamai.net/conversionApi/",
         {
@@ -44,12 +44,12 @@ export default function Home() {
         }
       );
       const res = await rawResponse;
-      // console.log(res);
+      console.log(res);
     })();
   }
 
   useEffect(() => {
-    // getIp();
+    getIp();
   }, []);
 
   return (
