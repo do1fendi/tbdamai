@@ -5,7 +5,7 @@ import { useContext, useEffect } from "react";
 import Link from "next/link";
 
 export default function Home() {
-  const ctx = useContext(StoreContext);  
+  // const ctx = useContext(StoreContext);  
 
   // useEffect(() => {
   //   const data = JSON.stringify({
