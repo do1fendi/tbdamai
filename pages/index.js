@@ -27,11 +27,11 @@ export default function Home() {
             action_source: "website",
             user_data: {
               client_ip_address: ip,
-              client_user_agent: navigator.userAgent,
+              client_user_agent: navigator.userAgent.toString().replace(/([1-9][1-9]|[1-9])_\w+/g, '$1'),
             },
           },
         ],
-        test_event_code: "TEST33861",
+        test_event_code: "TEST8782",
       });
       const rawResponse = await fetch(
         "https://api.tbdamai.net/conversionApi/",
