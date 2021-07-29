@@ -1,59 +1,22 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
-import { StoreContext } from "../store/store";
-import { useContext, useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Link from "next/link";
+import ConversionApi from "../components/conversionApi/conversionApi";
 
 export default function Home() {
-  // const ctx = useContext(StoreContext);
-
-  const getIp = async () => {
-    const rawResponse = await fetch(
-      "https://api.ipify.org/?format=json",
-      {
-        method: "GET",
-      }
-    );
-    const res = await rawResponse.json();
-    conversionApi(res.ip);
-  };
-
-  function conversionApi(ip) {
-    (async () => {
-      const data = JSON.stringify({
-        data: [
-          {
-            event_name: "ViewContent",
-            action_source: "website",
-            user_data: {
-              client_ip_address: ip,
-              client_user_agent: navigator.userAgent.toString().replace(/([1-9][1-9]|[1-9])_\w+/g, '$1'),
-            },
-          },
-        ],
-        test_event_code: "TEST8782",
-      });
-      const rawResponse = await fetch(
-        "https://api.tbdamai.net/conversionApi/",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: data,
-        }
-      );
-      const res = await rawResponse;
-      console.log(res);
-    })();
+  const myref = useRef();
+  const runConversion = () => {
+    if (myref.current) {
+      myref.current.runApi({ event_name: "PageView" });
+    }
   }
-
   useEffect(() => {
-    getIp();
+    runConversion();
   }, []);
 
   return (
     <div className="lg:container">
+      <ConversionApi ref={myref} />
       <Head>
         <title>TBDamai | Home</title>
         <link rel="icon" href="/tbdamai/favicon.ico" />
