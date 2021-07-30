@@ -1,17 +1,25 @@
 import Head from "next/head";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import ConversionApi from "../components/conversionApi/conversionApi";
+import Card from '../components/Card/Card'
 
 export default function Home() {
+  const [data, setData] = useState([])
   const myref = useRef();
   const runConversion = () => {
     if (myref.current) {
       myref.current.runApi({ event_name: "PageView" });
     }
-  }
+  };
   useEffect(() => {
     runConversion();
+    const getRand = async() =>{
+      const dt = await fetch('https://api.tbdamai.net/frontend/random')
+      const res = await dt.json();
+      setData(res)
+    }
+    getRand()
   }, []);
 
   return (
@@ -72,6 +80,10 @@ export default function Home() {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="p-5 grid 2xl:grid-cols-6 sm:grid-cols-2 md:grid-cols-4 grid-cols-2 gap-3 sm:m-auto">
+        <Card data={data}></Card>
       </div>
     </div>
   );

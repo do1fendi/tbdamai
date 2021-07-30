@@ -1,7 +1,7 @@
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
 import Nav from "./Nav/Nav";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useContext } from "react";
 import { StoreContext } from "../store/store";
 import Head from "next/head";
 
