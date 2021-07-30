@@ -38,7 +38,7 @@ export default function NavUSer() {
   }
 
   return (
-    <>
+    <div>
 
       <Menu as="div" className="relative inline-block text-left mr-2">
         <div>
@@ -127,6 +127,6 @@ export default function NavUSer() {
           </div>
         </Dialog>
       </Transition>
-    </>
+    </div>
   )
 }
