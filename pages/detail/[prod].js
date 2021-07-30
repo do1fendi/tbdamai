@@ -20,7 +20,7 @@ function prod() {
 
   return <div className="container p-5 grid grid-cols-1 md:grid-cols-2">
     
-    <div className="p-5">
+    <div className="p-5 md:float-right flex md:justify-end">
     <img
       src={data.url}
       height="400"
