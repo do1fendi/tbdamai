@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Router from "next/router";
+import Link from "next/link";
 import { useState, Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 
@@ -51,12 +52,16 @@ function Card({ data }) {
           ) : (
             ""
           )}
-          <button
-            onClick={() => openUrl(dt.prod_name, dt.id)}
-            className="col-span-3 text-white font-bold bg-red-500 hover:bg-red-600 rounded-md h-8"
-          >
-            Lihat
-          </button>
+          {/* <Link href={`/detail/${dt.id}`}>
+            <a> */}
+              <button
+                onClick={() => openUrl(dt.prod_name, dt.id)}
+                className="col-span-3 text-white font-bold bg-red-500 hover:bg-red-600 rounded-md h-8"
+              >
+                Lihat
+              </button>
+            {/* </a>
+          </Link> */}
           {/* <div className="col-span-3 bg-neptune text-white rounded-2xl px-2">{dt.prod_desc}</div> */}
         </div>
       ))}
