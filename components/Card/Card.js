@@ -47,7 +47,7 @@ function Card({ data }) {
           )}
           {dt.prod_available_size != "" ? (
             <div className="col-span-3 textgray-900 rounded-2xl px-2">
-              Ukuran: {dt.prod_available_size.substring(1,8)}... {dt.prod_unit_size}
+              Ukuran: {dt.prod_available_size.substring(0,8)}...
             </div>
           ) : (
             ""

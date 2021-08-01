@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
-import useSWR from 'swr';
 
 // const fetcher = (url) => fetch(url).then((res) => res.json())
 

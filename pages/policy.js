@@ -2,7 +2,7 @@ import React from 'react'
 
 function policy() {
     return (
-        <div className="container p-5">
+        <div className="container p-2">
             <h1 className="mb-5 text-lg font-bold">Privacy Policy for tbdamai</h1>
 
             <p>At tbdamai, accessible from tbdamai.net, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by tbdamai and how we use it.</p>

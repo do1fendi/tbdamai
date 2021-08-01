@@ -1,6 +1,8 @@
 import { forwardRef, useImperativeHandle } from "react";
+import {useRouter} from "next/router"
 
 const conversionApi = forwardRef((props, ref) => {
+    
     useImperativeHandle(ref, () => ({
         runApi(dt) {
             getIp(dt);
@@ -18,7 +20,7 @@ const conversionApi = forwardRef((props, ref) => {
         conversionApi(res.ip, dt);
     };
 
-    function conversionApi(ip, dt) {
+    function conversionApi(ip, dt) {        
         (async () => {
             const data = JSON.stringify({
                 data: [
@@ -31,7 +33,7 @@ const conversionApi = forwardRef((props, ref) => {
                         ...dt
                     },
                 ],
-                test_event_code: "TEST8782",
+                test_event_code: "TEST78447",
             });
             const rawResponse = await fetch(
                 "https://api.tbdamai.net/conversionApi/",
@@ -44,7 +46,7 @@ const conversionApi = forwardRef((props, ref) => {
                 }
             );
             const res = await rawResponse;
-            // console.log(res);
+            
         })();
     }
 
