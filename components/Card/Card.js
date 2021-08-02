@@ -8,7 +8,7 @@ function Card({ data }) {
   let [isOpen, setIsOpen] = useState(false);
   const openUrl = (nm, id) => {
     let name = nm.toString().replace(/ /g, "_");
-    Router.push(`/detail/${name}/?id=${id}`);
+    Router.push(`/detail/${name}/`);
   };
   return (
     <>

@@ -9,9 +9,9 @@ function prod() {
 
   useEffect(() => {
     if (!router.isReady) return;
-    const { id } = router.query;
+    const { prod } = router.query;
     (async function fetchApi() {
-      let response = await fetch(`https://api.tbdamai.net/frontend/detail/${id}`)
+      let response = await fetch(`https://api.tbdamai.net/frontend/detail/${prod}`)
       response = await response.json()
       setData(response[0]);
     })()
