@@ -8,7 +8,7 @@ import Head from "next/head";
 export default function Layout({ children }) {
   const ctx = useContext(StoreContext);
   useEffect(() => {
-    console.log(localStorage.getItem("token"));
+    // console.log(localStorage.getItem("token"));
     if (localStorage.getItem("token")) {
       (async () => {
         const rawResponse = await fetch(`${process.env.BASEURL}/verifyToken`, {

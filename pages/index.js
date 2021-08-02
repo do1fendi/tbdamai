@@ -1,34 +1,43 @@
 import Head from "next/head";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useContext, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import ConversionApi from "../components/conversionApi/conversionApi";
-import Card from '../components/Card/Card';
+import { StoreContext } from "../store/store";
+import Card from "../components/Card/Card";
 
 export default function Home() {
-  const router = useRouter()
-  const [data, setData] = useState([])
-  const myref = useRef();
-  const runConversion = () => {
-    if (myref.current) {
-      myref.current.runApi({ event_name: "PageView" });
-    }
-  };
+  const ctx = useContext(StoreContext);
+  const router = useRouter();
+  const [data, setData] = useState([]);
+
   useEffect(() => {
     if (!router.isReady) return;
-    runConversion();
-    const getRand = async () => {
-      const dt = await fetch('https://api.tbdamai.net/frontend/random')
+
+    (async function getRand() {
+      const dt = await fetch("https://api.tbdamai.net/frontend/random");
       const res = await dt.json();
-      setData(res)
-    }
-    getRand()
-    // console.log(router.query.fbc)
+      setData(res);
+    })();
+
+    // conversion api
+    (async function fetchIp() {
+      let ip = await ctx.getIp();
+      ctx.conversionApi({
+        event_name: "PageView",
+        action_source: "website",
+        event_source_url: "https://tbdamai.net/",
+        user_data: {
+          client_ip_address: ip,
+          client_user_agent: navigator.userAgent
+            .toString()
+            .replace(/([1-9][1-9]|[1-9])_\w+/g, "$1"),
+        },
+      });
+    })();
   }, [router.query]);
 
   return (
     <div className="lg:container p-2">
-      <ConversionApi ref={myref} />
       <Head>
         <title>TBDamai | Home</title>
         <link rel="icon" href="/tbdamai/favicon.ico" />
