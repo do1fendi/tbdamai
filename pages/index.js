@@ -11,7 +11,7 @@ export default function Home() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    if (!router.isReady) return;
+    // if (!router.isReady) return;
 
     (async function getRand() {
       const dt = await fetch("https://api.tbdamai.net/frontend/random");

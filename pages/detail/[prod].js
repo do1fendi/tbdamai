@@ -1,40 +1,50 @@
-import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
+import Head from 'next/head';
 
-// const fetcher = (url) => fetch(url).then((res) => res.json())
+export const getStaticPaths = async () => {
+  const res = await fetch("https://api.tbdamai.net/frontend/allproduct");
+  const data = await res.json();  
+  const paths = data.map((path) => {
+    return {
+      params: { prod: path.prod_name.toString() },
+    };
+  });
+  return {
+    paths,
+    fallback: false,
+  };
+};
 
-function prod() {
-  const router = useRouter();
-  const [data, setData] = useState({});
+export const getStaticProps = async (context) => {
+  const prod = context.params.prod; 
+  const res = await fetch(
+    `https://api.tbdamai.net/frontend/detail/${prod}`
+  );
+  const data = await res.json();
+  return {
+    props: { data },
+  };
+};
 
-  useEffect(() => {
-    if (!router.isReady) return;
-    const { prod } = router.query;
-    (async function fetchApi() {
-      let response = await fetch(`https://api.tbdamai.net/frontend/detail/${prod}`)
-      response = await response.json()
-      setData(response[0]);
-    })()
-  }, [router.isReady]);  
-
-  return <div className="container p-5 grid grid-cols-1 md:grid-cols-2">
-    
-    <div className="p-5 md:float-right flex md:justify-end">
-    <img
-      src={data.url}
-      height="400"
-      width="400"
-      layout="responsive"
-    ></img>
+const prod = ({ data }) => {
+  return (
+    <>
+    <Head>
+      <title>{data[0].prod_name}</title>
+    </Head>
+    <div className="container p-5 grid grid-cols-1 md:grid-cols-2">
+      <div className="p-5 md:float-right flex md:justify-end">
+        <img src={data[0].url} height="400" width="400" layout="responsive"></img>
+      </div>
+      <div className="p-5">
+        <h1>Nama Produk: {data[0].prod_name}</h1>
+        <h1>Category Produk: {data[0].prod_category}</h1>
+        <h1>Hash Tag: #{data[0].prod_label1}</h1>
+        <h1>Deskripsi: {data[0].prod_desc}</h1>
+      </div>
+      {/* {JSON.stringify(data)} */}
     </div>
-    <div className="p-5">
-      <h1>Nama Produk: {data.prod_name}</h1>
-      <h1>Category Produk: {data.prod_category}</h1>
-      <h1>Hash Tag: #{data.prod_label1}</h1>
-      <h1>Deskripsi: {data.prod_desc}</h1>
-    </div>
-    {/* {JSON.stringify(data)} */}
-  </div>;
+    </>
+  );
 }
 
 export default prod;
