@@ -1,6 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
-import { Head } from "next/head";
+import Head from "next/head";
 import { useEffect, useState } from "react";
 import Card from "../../components/Card/Card";
 
@@ -29,19 +29,6 @@ export const getStaticProps = async (context) => {
 };
 
 function cat({ data }) {
-  // const router = useRouter();
-  // const [data, setData] = useState([]);
-  // const { cat, lbl } = router.query;
-
-  // useEffect(() => {
-  //   (async function fetchApi() {
-  //     let response = await fetch(
-  //       `https://api.tbdamai.net/frontend/product/${cat}/${lbl}`
-  //     );
-  //     response = await response.json();
-  //     setData(response);
-  //   })();
-  // });
   return (
     <div className="container mx-auto p-5">
       <Head>
