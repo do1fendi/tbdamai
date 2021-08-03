@@ -1,7 +1,19 @@
-import React from 'react'
+import Head from "next/head"
 
 function policy() {
     return (
+        <>
+        <Head>
+                <meta
+                    name="description"
+                    content="Policy di website kami"
+                />
+                <meta
+                    name="keywords"
+                    content="policy"
+                />
+                <title>TBdamai | Policy</title>
+            </Head>
         <div className="container p-2">
             <h1 className="mb-5 text-lg font-bold">Privacy Policy for tbdamai</h1>
 
@@ -52,6 +64,7 @@ function policy() {
 
             <p>By using our website, you hereby consent to our Privacy Policy and agree to its Terms and Conditions.</p>
         </div>
+        </>
     )
 }
 
