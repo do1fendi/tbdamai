@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import  sha256  from "js-sha256";
 
 export const StoreContext = createContext();
 
@@ -16,7 +17,7 @@ const StoreContextProvider = (props) => {
   const conversionApi = async (dt) => {
     const data = JSON.stringify({
       data: [dt],
-      test_event_code: "TEST78447",
+      test_event_code: "TEST88370",
     });
     const rawResponse = await fetch("https://api.tbdamai.net/conversionApi/", {
       method: "POST",
@@ -29,8 +30,12 @@ const StoreContextProvider = (props) => {
     // console.log(res)
   };
 
+  const hash = (dt) => {    
+    return sha256(dt)
+  }
+
   return (
-    <StoreContext.Provider value={{ logged, setLogged, getIp, conversionApi }}>
+    <StoreContext.Provider value={{ logged, setLogged, getIp, conversionApi, hash }}>
       {props.children}
     </StoreContext.Provider>
   );

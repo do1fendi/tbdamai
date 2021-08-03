@@ -18,7 +18,7 @@ export default function coran() {
 
     // conversion api
     (async function fetchIp() {
-      let ip = await ctx.getIp();   
+      let ip = await ctx.getIp();
       ctx.conversionApi({
         event_name: "PageView",
         action_source: "website",
@@ -35,7 +35,15 @@ export default function coran() {
   return (
     <div className="container mx-auto p-5">
       <Head>
-        <title>Coran</title>
+        <meta
+          name="description"
+          content="Menjual berbagai macam model coran untuk bahan pagar"
+        />
+        <meta
+          name="keywords"
+          content="coran, asesoris, hewan, ancuran, tombak"
+        />
+        <title>TBdamai | Coran</title>
       </Head>
       <div className="text-white font-semibold text-lg bg-blue-500 text-white rounded-2xl w-32 text-center mt-5 mb-5">
         Tombak

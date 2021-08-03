@@ -1,5 +1,19 @@
+import Head from 'next/head';
+
 function about() {
     return (
+        <>
+        <Head>
+        <meta
+          name="description"
+          content="Kami menjual berbagai bahan bangunan dan pagar"
+        />
+        <meta
+          name="keywords"
+          content="coran, asesoris, besi, ancuran, kawat las, sambungan"
+        />
+        <title>TBdamai | About</title>
+        </Head>
         <div className="container p-2">
             <div className="text-center p-8 text-5xl text-gray-400">
                 About Us
@@ -22,6 +36,7 @@ function about() {
 
             </div>
         </div>
+        </>
     )
 }
 

@@ -29,7 +29,15 @@ export default function kuningan() {
     return (
         <div className="container mx-auto p-5">
             <Head>
-                <title>Kuningan</title>
+            <meta
+          name="description"
+          content="Menjual berbagai macam model kuningan untuk asesoris"
+        />
+        <meta
+          name="keywords"
+          content="kuningan, asesoris, r pion, pentol, belimbing"
+        />
+        <title>TBdamai | Kuningan</title>
             </Head>
             <div className="text-white font-semibold text-lg bg-blue-500 text-white rounded-2xl w-32 text-center mt-5 mb-5">Kuningan</div>
             <div className="grid 2xl:grid-cols-6 sm:grid-cols-2 md:grid-cols-4 grid-cols-2 gap-3 sm:m-auto">                

@@ -44,9 +44,17 @@ function cat({ data }) {
   // });
   return (
     <div className="container mx-auto p-5">
-      {/* <Head>
-        <title>Coran</title>
-      </Head> */}
+      <Head>
+        <meta
+          name="description"
+          content="Menjual berbagai macam model coran untuk bahan pagar"
+        />
+        <meta
+          name="keywords"
+          content="coran, asesoris, hewan, ancuran, tombak"
+        />
+        <title>TBdamai | Coran</title>
+      </Head>
       <div className="uppercase text-white font-semibold text-lg bg-blue-500 text-white rounded-2xl w-32 text-center mt-5 mb-5">
         {data[0].prod_label1}
       </div>

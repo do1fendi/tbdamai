@@ -29,7 +29,16 @@ const prod = ({ data }) => {
   return (
     <>
     <Head>
-      <title>{data[0].prod_name}</title>
+      <title>TBdamai | {data[0].prod_name}</title>      
+        <meta
+          name="description"
+          content="Menjual berbagai macam model coran untuk bahan pagar"
+        />
+        <meta
+          name="keywords"
+          content={data[0].prod_name}
+        />
+        
     </Head>
     <div className="container p-5 grid grid-cols-1 md:grid-cols-2">
       <div className="p-5 md:float-right flex md:justify-end">

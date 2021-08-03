@@ -11,7 +11,6 @@ export default function Home() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    // if (!router.isReady) return;
 
     (async function getRand() {
       const dt = await fetch("https://api.tbdamai.net/frontend/random");
@@ -20,9 +19,9 @@ export default function Home() {
     })();
 
     // conversion api
-    (async function fetchIp() {
-      let ip = await ctx.getIp();
-      ctx.conversionApi({
+    (async function fetchIp() {      
+      const ip = await ctx.getIp();
+      const data = {
         event_name: "PageView",
         action_source: "website",
         event_source_url: "https://tbdamai.net/",
@@ -32,7 +31,10 @@ export default function Home() {
             .toString()
             .replace(/([1-9][1-9]|[1-9])_\w+/g, "$1"),
         },
-      });
+      }
+      localStorage.getItem("tbEmail") ? data.user_data.em = ctx.hash(localStorage.getItem("tbEmail")):'';
+      router.query.fbclid ? data.user_data.fbc = `fb.1.${Date.now()}.${router.query.fbclid}`:'';
+      ctx.conversionApi(data);
     })();
   }, [router.query]);
 
@@ -40,6 +42,8 @@ export default function Home() {
     <div className="lg:container p-2">
       <Head>
         <title>TBDamai | Home</title>
+        <meta name="description" content="Menjual alat dan bahan untuk bangunan dan pagar" />
+        <meta name="keywords" content="coran, tempa, pipa, behel, unp, besi, asesoris" />
         <link rel="icon" href="/tbdamai/favicon.ico" />
       </Head>
       {/* <div className="h-48 w-full from-blue-600 to-purple-500 bg-gradient-to-b flex justify-center items-center text-white text-2xl lg:text-6xl">Selamat Datang di Tb Damai</div> */}

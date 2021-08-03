@@ -64,6 +64,7 @@ export default function NavLoginForm(props) {
         // if login success
         if (res.token) {
           localStorage.setItem('token', res.token)
+          localStorage.setItem('tbEmail', form.username)
           ctx.setLogged(true);
           props.closeModal()
         }
