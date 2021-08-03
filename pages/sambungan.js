@@ -1,9 +1,13 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 import Card from "../components/Card/Card";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { StoreContext } from "../store/store";
 
 export default function coran() {
   const [data, setData] = useState([]);
+  const ctx = useContext(StoreContext);
+  const router = useRouter();
 
   useEffect(() => {
     (async function fetchApi() {
@@ -13,7 +17,25 @@ export default function coran() {
       response = await response.json();
       setData(response);
     })();
-  }, []);
+    // conversion api
+    (async function fetchIp() {
+      const ip = await ctx.getIp();
+      const data = {
+        event_name: "PageView",
+        action_source: "website",
+        event_source_url: "https://tbdamai.net/sambungan/",
+        user_data: {
+          client_ip_address: ip,
+          client_user_agent: navigator.userAgent
+            .toString()
+            .replace(/([1-9][1-9]|[1-9])_\w+/g, "$1"),
+        },
+      }
+      localStorage.getItem("tbEmail") ? data.user_data.em = ctx.hash(localStorage.getItem("tbEmail")) : '';
+      router.query.fbclid ? data.user_data.fbc = `fb.1.${Date.now()}.${router.query.fbclid}` : '';
+      ctx.conversionApi(data);
+    })();
+  }, [router.query]);
   return (
     <div className="container mx-auto p-5">
       <Head>
