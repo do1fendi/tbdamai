@@ -1,4 +1,6 @@
 import Head from 'next/head';
+import { useContext, useEffect } from "react";
+import { StoreContext } from "../../store/store";
 
 export const getStaticPaths = async () => {
   const res = await fetch("https://api.tbdamai.net/frontend/allproduct");
@@ -21,11 +23,31 @@ export const getStaticProps = async (context) => {
   );
   const data = await res.json();
   return {
-    props: { data },
+    props: { data, prod },
   };
 };
 
-const prod = ({ data }) => {
+const prod = ({ data, prod }) => {
+  const ctx = useContext(StoreContext);
+  useEffect(() => {
+    // conversion api
+    (async function fetchIp() {
+      let ip = await ctx.getIp();
+      ctx.conversionApi({
+        event_name: "ViewContent",
+        action_source: "website",
+        event_source_url: `https://tbdamai.net/detail/${prod}`,
+        user_data: {
+          client_ip_address: ip,
+          client_user_agent: navigator.userAgent
+            .toString()
+            .replace(/([1-9][1-9]|[1-9])_\w+/g, "$1"),
+        },
+          content_ids: data[0].prod_name,
+          content_type: "product",
+      });
+    })();
+  }, []);
   return (
     <>
     <Head>
