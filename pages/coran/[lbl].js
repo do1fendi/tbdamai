@@ -1,8 +1,9 @@
 import React from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { useEffect, useContext } from "react";
 import Card from "../../components/Card/Card";
+import { StoreContext } from "../../store/store";
 
 export const getStaticPaths = () => {
   const paths = [
@@ -24,11 +25,35 @@ export const getStaticProps = async (context) => {
   );
   const data = await res.json();
   return {
-    props: { data },
+    props: { data, lbl },
   };
 };
 
-function cat({ data }) {
+function cat({ data, lbl }) {
+  const ctx = useContext(StoreContext);
+  const router = useRouter();
+
+  useEffect(() => {
+    // conversion api
+    (async function fetchIp() {      
+      const ip = await ctx.getIp();
+      const data = {
+        event_name: "PageView",
+        action_source: "website",
+        event_source_url: `https://tbdamai.net/coran/${lbl}`,
+        user_data: {
+          client_ip_address: ip,
+          client_user_agent: navigator.userAgent
+            .toString()
+            .replace(/([1-9][1-9]|[1-9])_\w+/g, "$1"),
+        },
+      }
+      localStorage.getItem("tbEmail") ? data.user_data.em = ctx.hash(localStorage.getItem("tbEmail")):'';
+      router.query.fbclid ? data.user_data.fbc = `fb.1.${Date.now()}.${router.query.fbclid}`:'';
+      ctx.conversionApi(data);
+    })();
+  }, [router.query]);
+
   return (
     <div className="container mx-auto p-5">
       <Head>

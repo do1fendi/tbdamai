@@ -21,6 +21,7 @@ export default function Home() {
     // conversion api
     (async function fetchIp() {      
       const ip = await ctx.getIp();
+      // console.log(ip)
       const data = {
         event_name: "PageView",
         action_source: "website",
