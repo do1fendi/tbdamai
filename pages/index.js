@@ -43,6 +43,7 @@ export default function Home() {
     <div className="lg:container p-2">
       <Head>
         <title>TBDamai | Home</title>
+        <meta name="facebook-domain-verification" content="z9wdsid8bezintv31nkcj8s6kf552r" />
         <meta name="description" content="Menjual alat dan bahan untuk bangunan dan pagar" />
         <meta name="keywords" content="coran, tempa, pipa, behel, unp, besi, asesoris" />
         <link rel="icon" href="/tbdamai/favicon.ico" />
