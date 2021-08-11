@@ -20,6 +20,7 @@ function Card({ data }) {
           <div className="col-span-3">
             <Image
               src={dt.url}
+              alt={dt.prod_name +" "+ dt.prod_desc}
               height="400"
               width="400"
               layout="responsive"
