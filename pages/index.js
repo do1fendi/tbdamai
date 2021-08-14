@@ -9,6 +9,7 @@ export default function Home() {
   const ctx = useContext(StoreContext);
   const router = useRouter();
   const [data, setData] = useState([]);
+  const [latest, setLatest] = useState([]);
 
   useEffect(() => {
 
@@ -16,6 +17,12 @@ export default function Home() {
       const dt = await fetch("https://api.tbdamai.net/frontend/random");
       const res = await dt.json();
       setData(res);
+
+      const dtt = await fetch("https://api.tbdamai.net/frontend/latest");
+      const ress = await dtt.json();
+      setLatest(ress);
+
+
     })();
 
     // conversion api
@@ -90,6 +97,16 @@ export default function Home() {
         </div>
       </div>
 
+      <div className="mt-5 mb-2 bg-blue-500 text-white lg:text-xl text-lg w-auto inline-block p-1 px-2">
+        Baru ditambahkan
+      </div>
+      <div className="grid 2xl:grid-cols-6 sm:grid-cols-2 md:grid-cols-4 grid-cols-2 gap-3 sm:m-auto">
+        <Card data={latest}></Card>
+      </div>
+
+      <div className="mt-10 mb-2 bg-blue-500 text-white lg:text-xl text-lg w-auto inline-block p-1 px-2">
+        Variasi produk
+      </div>
       <div className="grid 2xl:grid-cols-6 sm:grid-cols-2 md:grid-cols-4 grid-cols-2 gap-3 sm:m-auto">
         <Card data={data}></Card>
       </div>

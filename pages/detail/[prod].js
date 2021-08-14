@@ -1,10 +1,11 @@
 import Head from 'next/head';
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { StoreContext } from "../../store/store";
+import Card from "../../components/Card/Card"
 
 export const getStaticPaths = async () => {
   const res = await fetch("https://api.tbdamai.net/frontend/allproduct");
-  const data = await res.json();  
+  const data = await res.json();
   const paths = data.map((path) => {
     return {
       params: { prod: path.prod_name.toString() },
@@ -17,21 +18,30 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async (context) => {
-  const prod = context.params.prod; 
+  let similarProd = {}
+  const prod = context.params.prod;
   const res = await fetch(
     `https://api.tbdamai.net/frontend/detail/${prod}`
   );
   const data = await res.json();
+
+  // Get similar products
+  const resSimilarProd = await fetch(`https://api.tbdamai.net/frontend/similar-product/${data[0].prod_category}`)
+  const dt = await resSimilarProd.json()
+  similarProd = dt
+
   return {
-    props: { data, prod },
+    props: { data, prod, similarProd },
   };
 };
 
-const prod = ({ data, prod }) => {
+const prod = ({ data, prod, similarProd }) => {
+
+
   const ctx = useContext(StoreContext);
   useEffect(() => {
     // conversion api
-    (async function fetchIp() {
+    (async function runAsync() {
       let ip = await ctx.getIp();
       ctx.conversionApi({
         event_name: "ViewContent",
@@ -43,15 +53,16 @@ const prod = ({ data, prod }) => {
             .toString()
             .replace(/([1-9][1-9]|[1-9])_\w+/g, "$1"),
         },
-          content_ids: data[0].prod_name,
-          content_type: "product",
+        content_ids: data[0].prod_name,
+        content_type: "product",
       });
+
     })();
   }, []);
   return (
-    <>
-    <Head>
-      <title>TBdamai | {data[0].prod_name}</title>      
+    <div className="container">
+      <Head>
+        <title>TBdamai | {data[0].prod_name}</title>
         <meta
           name="description"
           content="Menjual berbagai macam model coran untuk bahan pagar"
@@ -60,21 +71,31 @@ const prod = ({ data, prod }) => {
           name="keywords"
           content={data[0].prod_name}
         />
-        
-    </Head>
-    <div className="container p-5 grid grid-cols-1 md:grid-cols-2">
-      <div className="p-5 md:float-right flex md:justify-end">
-        <img src={data[0].url} height="400" width="400" layout="responsive"></img>
+
+      </Head>
+      <div className="container p-5 grid grid-cols-1 md:grid-cols-2">
+        <div className="p-5 md:float-right flex md:justify-end">
+          <img src={data[0].url} height="400" width="400" layout="responsive"></img>
+        </div>
+        <div className="p-5 uppercase">
+          <h1><span className="font-bold">Nama Produk:</span> {data[0].prod_name.replace(/-/g, " ")}</h1>
+          <h1><span className="font-bold">Category Produk:</span> {data[0].prod_category}</h1>
+          <h1><span className="font-bold">Ukuran:</span> {data[0].prod_available_size != "" ? (
+            <span className="">
+              {data[0].prod_available_size}
+            </span>
+          ) : (
+            <span>{data[0].prod_height} x {data[0].prod_width}</span>
+          )} {data[0].prod_unit_size}</h1>
+          <h1><span className="font-bold">Hash Tag:</span> #{data[0].prod_label1}</h1>
+          <h1><span className="font-bold">Deskripsi:</span> {data[0].prod_desc}</h1>
+        </div>
       </div>
-      <div className="p-5">
-        <h1>Nama Produk: {data[0].prod_name}</h1>
-        <h1>Category Produk: {data[0].prod_category}</h1>
-        <h1>Hash Tag: #{data[0].prod_label1}</h1>
-        <h1>Deskripsi: {data[0].prod_desc}</h1>
+      <div className="text-white font-semibold text-lg bg-blue-500 text-white w-32 text-center mt-5 mb-5">Produk Serupa</div>
+      <div className="grid 2xl:grid-cols-6 sm:grid-cols-2 md:grid-cols-4 grid-cols-2 gap-3 sm:m-auto">
+        <Card data={similarProd}></Card>
       </div>
-      {/* {JSON.stringify(data)} */}
     </div>
-    </>
   );
 }
 

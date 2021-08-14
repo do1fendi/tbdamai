@@ -26,8 +26,8 @@ function Card({ data }) {
               layout="responsive"
             ></Image>
           </div>
-          <div className="col-span-3 bg-blue-400 text-white text-center px-2">
-            {dt.prod_name}
+          <div className="col-span-3 bg-blue-400 text-white text-center px-2 uppercase">
+            {dt.prod_name.replace(/-/g," ")}
           </div>
           <div className=""></div>
           {/* <div className="col-span-3 text-gray-900 rounded-2xl px-2">Berat: {dt.prod_weight} {dt.prod_unit_weight}</div> */}
