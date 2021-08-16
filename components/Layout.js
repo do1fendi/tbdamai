@@ -36,6 +36,19 @@ export default function Layout({ children }) {
           name="facebook-domain-verification"
           content="z9wdsid8bezintv31nkcj8s6kf552r"
         />
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-LYDSMM6GNN"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+            
+              gtag('config', 'G-LYDSMM6GNN');`,
+          }}
+        />
       </Head>
       <Nav />
       <Header />
