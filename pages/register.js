@@ -52,13 +52,13 @@ function register() {
         return re.test(String(email).toLowerCase());
     }
 
-    return (
-        <div className="flex justify-center items-center h-screen ">
+    return ( 
+        <div className="flex justify-center items-center mt-2 md:mt-5 p-5 ">
             <Head>
                 <title>TBDamai | Register</title>
             </Head>
-            <div className="text-center -mt-40">
-            <div className="text-red-600 text-4xl mb-20 ">Register</div>
+            <div className="text-center">
+            <div className="text-red-600 text-4xl mt-5 md:mt-20 mb-10 ">Register</div>
                 <input
                     ref={name}
                     value={form.name}

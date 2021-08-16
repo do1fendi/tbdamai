@@ -23,7 +23,11 @@ export default function NavLoginForm(props) {
       fbTokenExpiration: response.data_access_expiration_time,
       fbPicUrl: response.picture.data.url,
     }
-    if (response) {
+    if (response.email){
+      localStorage.setItem('tbEmail', response.email)
+    }
+
+    if (response) {      
       (async () => {
         const rawResponse = await fetch(`${process.env.BASEURL}/fbLogin`, {
           method: "POST",
@@ -35,7 +39,7 @@ export default function NavLoginForm(props) {
         });
         const res = await rawResponse.json();
         if (res.status == 'Success') {
-          localStorage.setItem('token', res.token)
+          localStorage.setItem('token', res.token)          
           ctx.setLogged(true)
           props.closeModal()
         }

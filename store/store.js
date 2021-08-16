@@ -17,7 +17,7 @@ const StoreContextProvider = (props) => {
   const conversionApi = async (dt) => {
     const json = JSON.stringify({
       data: [dt],
-      test_event_code: "TEST62699",
+      test_event_code: "TEST14958",
     });
     const rawResponse = await fetch("https://api.tbdamai.net/conversionApi/", {
       method: "POST",
@@ -28,7 +28,7 @@ const StoreContextProvider = (props) => {
     });
     
     const res = await rawResponse;
-    console.log(res)
+    // console.log(res)
   };
 
   const hash = (dt) => {    

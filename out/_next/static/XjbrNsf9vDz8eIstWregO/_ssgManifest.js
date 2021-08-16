@@ -1,0 +1,1 @@
+self.__SSG_MANIFEST=new Set(["\u002Fcoran\u002F[lbl]","\u002Fdetail\u002F[prod]"]);self.__SSG_MANIFEST_CB&&self.__SSG_MANIFEST_CB()

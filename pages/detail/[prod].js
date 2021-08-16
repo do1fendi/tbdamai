@@ -91,7 +91,7 @@ const prod = ({ data, prod, similarProd }) => {
           <h1><span className="font-bold">Deskripsi:</span> {data[0].prod_desc}</h1>
         </div>
       </div>
-      <div className="text-white font-semibold text-lg bg-blue-500 text-white w-32 text-center mt-5 mb-5">Produk Serupa</div>
+      <div className="mt-5 mb-2 bg-blue-500 text-white lg:text-xl text-lg w-auto inline-block p-1 px-2">Produk Serupa</div>
       <div className="grid 2xl:grid-cols-6 sm:grid-cols-2 md:grid-cols-4 grid-cols-2 gap-3 sm:m-auto">
         <Card data={similarProd}></Card>
       </div>

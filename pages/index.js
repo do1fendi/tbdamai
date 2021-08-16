@@ -53,7 +53,7 @@ export default function Home() {
         <meta name="facebook-domain-verification" content="z9wdsid8bezintv31nkcj8s6kf552r" />
         <meta name="description" content="Menjual alat dan bahan untuk bangunan dan pagar" />
         <meta name="keywords" content="coran, tempa, pipa, behel, unp, besi, asesoris" />
-        <link rel="icon" href="/tbdamai/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="https://tbdamai.net/Favicon.png" />
       </Head>
       {/* <div className="h-48 w-full from-blue-600 to-purple-500 bg-gradient-to-b flex justify-center items-center text-white text-2xl lg:text-6xl">Selamat Datang di Tb Damai</div> */}
       <div className="mt-5 mb-2 bg-red-500 text-white lg:text-xl text-lg w-auto inline-block p-1 px-2">
