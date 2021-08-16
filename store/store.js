@@ -35,8 +35,14 @@ const StoreContextProvider = (props) => {
     return sha256(dt)
   }
 
+  const ga = (url) => {
+    window.gtag('config', 'UA-140006907-2', {
+      page_path: url,
+    })
+  }
+
   return (
-    <StoreContext.Provider value={{ logged, setLogged, getIp, conversionApi, hash }}>
+    <StoreContext.Provider value={{ logged, setLogged, getIp, conversionApi, hash, ga }}>
       {props.children}
     </StoreContext.Provider>
   );

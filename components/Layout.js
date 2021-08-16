@@ -38,7 +38,7 @@ export default function Layout({ children }) {
         />
         <script
           async
-          src="https://www.googletagmanager.com/gtag/js?id=G-LYDSMM6GNN"
+          src="https://www.googletagmanager.com/gtag/js?id=UA-140006907-2"
         ></script>
         <script
           dangerouslySetInnerHTML={{
@@ -46,7 +46,7 @@ export default function Layout({ children }) {
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
             
-              gtag('config', 'G-LYDSMM6GNN');`,
+              gtag('config', 'UA-140006907-2', {page_path: window.location.pathname,});`,
           }}
         />
       </Head>
@@ -57,3 +57,4 @@ export default function Layout({ children }) {
     </>
   );
 }
+
