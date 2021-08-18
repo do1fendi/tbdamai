@@ -1,13 +1,16 @@
 import { useState, useContext, useRef } from "react";
 import { StoreContext } from "../../store/store";
-import FacebookLogin from "react-facebook-login";
-import Router from 'next/router';
+// import FacebookLogin from "react-facebook-login";
+import Router from "next/router";
+import dynamic from "next/dynamic";
+
+const FacebookLogin = dynamic(() => import("react-facebook-login"));
 
 export default function NavLoginForm(props) {
   const ctx = useContext(StoreContext);
   const userN = useRef(null);
   const pass = useRef(null);
-
+  
   const [form, setForm] = useState({
     username: "",
     password: "",
@@ -22,12 +25,12 @@ export default function NavLoginForm(props) {
       fbToken: response.accessToken,
       fbTokenExpiration: response.data_access_expiration_time,
       fbPicUrl: response.picture.data.url,
-    }
-    if (response.email){
-      localStorage.setItem('tbEmail', response.email)
+    };
+    if (response.email) {
+      localStorage.setItem("tbEmail", response.email);
     }
 
-    if (response) {      
+    if (response) {
       (async () => {
         const rawResponse = await fetch(`${process.env.BASEURL}/fbLogin`, {
           method: "POST",
@@ -38,14 +41,13 @@ export default function NavLoginForm(props) {
           body: JSON.stringify(fbData),
         });
         const res = await rawResponse.json();
-        if (res.status == 'Success') {
-          localStorage.setItem('token', res.token)          
-          ctx.setLogged(true)
-          props.closeModal()
+        if (res.status == "Success") {
+          localStorage.setItem("token", res.token);
+          ctx.setLogged(true);
+          props.closeModal();
         }
       })();
     }
-
   };
 
   const webLogin = () => {
@@ -59,7 +61,7 @@ export default function NavLoginForm(props) {
           method: "POST",
           headers: {
             Accept: "application/json",
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
           },
           body: JSON.stringify(form),
         });
@@ -67,19 +69,19 @@ export default function NavLoginForm(props) {
         console.log(res);
         // if login success
         if (res.token) {
-          localStorage.setItem('token', res.token)
-          localStorage.setItem('tbEmail', form.username)
+          localStorage.setItem("token", res.token);
+          localStorage.setItem("tbEmail", form.username);
           ctx.setLogged(true);
-          props.closeModal()
+          props.closeModal();
         }
       })();
     }
   };
 
   const callReg = (e) => {
-    props.closeModal()
-    Router.push('/register')
-  }
+    props.closeModal();
+    Router.push("/register");
+  };
 
   return (
     <div>
@@ -105,17 +107,26 @@ export default function NavLoginForm(props) {
       >
         Login
       </button>
-      <FacebookLogin
-        appId={process.env.FACEBOOK_APP_ID}
-        autoLoad={true}
-        fields="name,email,picture"
-        scope="public_profile"
-        callback={facebookLogin}
-        icon="fa-facebook"
-        size="small"
-      />
-      <button onClick={callReg} className="mb-2 bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-4 rounded-lg mt-2 w-full focus:outline-none">Register</button>
+      {props.isOpen ? (
+        <FacebookLogin
+          appId={process.env.FACEBOOK_APP_ID}
+          autoLoad={true}
+          fields="name,email,picture"
+          scope="public_profile"
+          callback={facebookLogin}
+          icon="fa-facebook"
+          size="small"
+        />
+      ) : (
+        ""
+      )}
 
+      <button
+        onClick={callReg}
+        className="mb-2 bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-4 rounded-lg mt-2 w-full focus:outline-none"
+      >
+        Register
+      </button>
     </div>
   );
 }

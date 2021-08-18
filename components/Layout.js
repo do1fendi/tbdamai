@@ -69,6 +69,7 @@ export default function Layout({ children }) {
       <Script
         async
         src="https://www.googletagmanager.com/gtag/js?id=UA-140006907-2"
+        strategy="lazyOnload"
       />
       <Script
         dangerouslySetInnerHTML={{
@@ -78,6 +79,7 @@ export default function Layout({ children }) {
             
               gtag('config', 'UA-140006907-2', {page_path: window.location.pathname,});`,
         }}
+        strategy="lazyOnload"
       />
     </>
   );

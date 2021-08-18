@@ -121,7 +121,7 @@ export default function NavUSer() {
                 >
                   Login
                 </Dialog.Title>
-                <NavLoginForm closeModal={closeModal} />
+                <NavLoginForm closeModal={closeModal} isOpen={isOpen} />
               </div>
             </Transition.Child>
           </div>
