@@ -113,9 +113,11 @@ export default function NavLoginForm(props) {
           autoLoad={true}
           fields="name,email,picture"
           scope="public_profile"
+          redirectUri="https://tbdamai.net"
           callback={facebookLogin}
           icon="fa-facebook"
           size="small"
+          isMobile={false}       
         />
       ) : (
         ""
