@@ -15,7 +15,7 @@ function Card({ data }) {
       {data.map((dt) => (
         <div
           key={dt.id}
-          className="grid grid-cols-3 gap-2 shadow-lg p-2 rounded-lg border-2 border-blue-100 border-opacity-25"
+          className="grid grid-cols-3 gap-2 shadow-lg p-1 rounded-lg border-2 border-blue-100 border-opacity-25"
         >
           <div className="col-span-3">
             <Image
