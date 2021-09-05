@@ -35,9 +35,10 @@ const prod = ({ data, prod }) => {
 
   useEffect(() => {
     // conversion api
-    (async function runAsync() {     
+    (async function runAsync() {
       let ip = await ctx.getIp();
-      ctx.conversionApi({
+      const fbclid = ctx.getUrlParameter("fbclid");
+      const json = {
         event_name: "ViewContent",
         action_source: "website",
         event_source_url: `https://tbdamai.net/detail/${prod}`,
@@ -49,7 +50,25 @@ const prod = ({ data, prod }) => {
         },
         content_ids: data[0].prod_name,
         content_type: "product",
-      });
+      };
+      localStorage.getItem("tbEmail")
+        ? (json.user_data.em = ctx.hash(localStorage.getItem("tbEmail")))
+        : "";
+      fbclid ? (json.user_data.fbc = `fb.1.${Date.now()}.${fbclid}`) : "";
+      ctx.conversionApi(json);
+      // ctx.conversionApi({
+      //   event_name: "ViewContent",
+      //   action_source: "website",
+      //   event_source_url: `https://tbdamai.net/detail/${prod}`,
+      //   user_data: {
+      //     client_ip_address: ip,
+      //     client_user_agent: navigator.userAgent
+      //       .toString()
+      //       .replace(/([1-9][1-9]|[1-9])_\w+/g, "$1"),
+      //   },
+      //   content_ids: data[0].prod_name,
+      //   content_type: "product",
+      // });
     })();
 
     // Get similar products

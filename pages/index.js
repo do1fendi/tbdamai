@@ -10,13 +10,8 @@ export default function Home() {
   const router = useRouter();
   const [data, setData] = useState([]);
   const [latest, setLatest] = useState([]);
-  // const { fbclid } = router.query;
-  // console.log(fbclid);
 
   useEffect(() => {
-    // const router = useRouter();
-    // const { fbclid } = router.query;
-    // console.log(ctx.getUrlParameter("fbclid"));
     (async function getRand() {
       const dt = await fetch("https://api.tbdamai.net/frontend/random");
       const res = await dt.json();
@@ -31,7 +26,6 @@ export default function Home() {
     (async function fetchIp() {
       const ip = await ctx.getIp();
       const fbclid = ctx.getUrlParameter("fbclid");
-      // console.log(fbclid)
       const data = {
         event_name: "PageView",
         action_source: "website",
@@ -43,7 +37,6 @@ export default function Home() {
             .replace(/([1-9][1-9]|[1-9])_\w+/g, "$1"),
         },
       };
-
       localStorage.getItem("tbEmail")
         ? (data.user_data.em = ctx.hash(localStorage.getItem("tbEmail")))
         : "";
