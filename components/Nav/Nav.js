@@ -30,6 +30,13 @@ export default function Nav() {
                       Home
                     </a>
                   </Link>
+                  <Link href="/besi">
+                    <a className={router.pathname == "/besi" ? "selected bg-blue-500 text-white px-3 py-2 rounded-md text-sm font-medium" : "hover:bg-blue-500 text-white px-3 py-2 rounded-md text-sm font-medium"}
+
+                    >
+                      Besi
+                    </a>
+                  </Link>
                   <Link href="/coran">
                     <a className={router.pathname == "/coran" ? "selected bg-blue-500 text-white px-3 py-2 rounded-md text-sm font-medium" : "hover:bg-blue-500 text-white px-3 py-2 rounded-md text-sm font-medium"}
 
@@ -142,6 +149,13 @@ export default function Nav() {
                 <a onClick={() => setIsOpen(!isOpen)} className={router.pathname == "/" ? "selected bg-blue-500 text-white px-3 py-2 block rounded-md text-sm font-medium" : "hover:bg-blue-500 text-white px-3 py-2 block rounded-md text-sm font-medium"}
                 >
                   Home
+                </a>
+              </Link>
+              <Link href="/besi">
+                <a onClick={() => setIsOpen(!isOpen)} className={router.pathname == "/besi" ? "selected bg-blue-500 text-white px-3 py-2 block rounded-md text-sm font-medium" : "hover:bg-blue-500 text-white px-3 py-2 block rounded-md text-sm font-medium"}
+
+                >
+                  Besi
                 </a>
               </Link>
               <Link href="/coran">
