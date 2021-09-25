@@ -34,15 +34,6 @@ export default function besi() {
             fbclid ? (data.user_data.fbc = `fb.1.${Date.now()}.${fbclid}`) : "";
             ctx.conversionApi(data);
         })();
-
-        //GA
-        // [const handleRouteChange = (url) => {
-        //     ctx.ga(url)
-        // }
-        // router.events.on('routeChangeStart', handleRouteChange)
-        // return () => {
-        //     router.events.off('routeChangeStart', handleRouteChange)
-        // }]
     }, [router.query])
     return (
         <div className="container mx-auto p-5">

@@ -65,6 +65,13 @@ export default function Nav() {
                       Baut
                     </a>
                   </Link>
+                  <Link href="/aksesori">
+                    <a className={router.pathname == "/aksesori" ? "selected bg-blue-500 text-white px-3 py-2 rounded-md text-sm font-medium" : "hover:bg-blue-500 text-white px-3 py-2 rounded-md text-sm font-medium"}
+
+                    >
+                      Aksesori
+                    </a>
+                  </Link>
                   <Link href="/about">
                     <a className={router.pathname == "/about" ? "selected bg-blue-500 text-white px-3 py-2 rounded-md text-sm font-medium" : "hover:bg-blue-500 text-white px-3 py-2 rounded-md text-sm font-medium"}
 
@@ -184,6 +191,13 @@ export default function Nav() {
 
                 >
                   Baut
+                </a>
+              </Link>
+              <Link href="/aksesori">
+                <a onClick={() => setIsOpen(!isOpen)} className={router.pathname == "/aksesori" ? "selected bg-blue-500 text-white px-3 py-2 block rounded-md text-sm font-medium" : "hover:bg-blue-500 text-white px-3 py-2 block rounded-md text-sm font-medium"}
+
+                >
+                  Aksesori
                 </a>
               </Link>
               <Link href="/about">
