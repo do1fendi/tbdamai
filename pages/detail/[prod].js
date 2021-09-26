@@ -56,19 +56,6 @@ const prod = ({ data, prod }) => {
         : "";
       fbclid ? (json.user_data.fbc = `fb.1.${Date.now()}.${fbclid}`) : "";
       ctx.conversionApi(json);
-      // ctx.conversionApi({
-      //   event_name: "ViewContent",
-      //   action_source: "website",
-      //   event_source_url: `https://tbdamai.net/detail/${prod}`,
-      //   user_data: {
-      //     client_ip_address: ip,
-      //     client_user_agent: navigator.userAgent
-      //       .toString()
-      //       .replace(/([1-9][1-9]|[1-9])_\w+/g, "$1"),
-      //   },
-      //   content_ids: data[0].prod_name,
-      //   content_type: "product",
-      // });
     })();
 
     // Get similar products
@@ -91,12 +78,11 @@ const prod = ({ data, prod }) => {
         <meta name="keywords" content={data[0].prod_name} />
       </Head>
       <div className="container p-5 grid grid-cols-1 md:grid-cols-2">
-        <div className="p-5 md:float-right flex md:justify-end">
+        <div className="p-5 md:float-right flex md:justify-end container-image">
           <img
-            src={data[0].url}
-            height="400"
-            width="400"
-            layout="responsive"
+            src={data[0].url}           
+            layout="fill"
+            className="image"
           ></img>
         </div>
         <div className="p-5 uppercase">
